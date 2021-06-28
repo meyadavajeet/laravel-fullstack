@@ -1,8 +1,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
+// import added as guidence of bootswatch official documentation
+@import "~bootswatch/dist/materia/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/materia/bootswatch";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';

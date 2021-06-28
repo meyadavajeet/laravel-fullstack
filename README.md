@@ -61,7 +61,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-
+## Steps for creating new full stack project from scratch 
 ## Importants points and commands used in this project 
 
 # To create Laravel project
@@ -85,4 +85,10 @@ $ php artisan ui react
  2. Bootswatch having same class as of bootstrap
  3. Official site := https://bootswatch.com/
  4. We are using sass instead of normal css
- 
+
+ ## to run the application in watch mode 
+ $ npm run watch
+
+
+## to run the laravel application
+$ php artisan serve
