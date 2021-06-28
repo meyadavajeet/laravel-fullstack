@@ -35,3 +35,8 @@ $ php artisan make:migration create_contacts_table
 ## migrate created table on database
 $ php artisan migrate
 
+## creating resource controller
+$ php artisan make:controller ContactController --resource
+
+## create Contact Model
+$ php artisan make:model Contact
