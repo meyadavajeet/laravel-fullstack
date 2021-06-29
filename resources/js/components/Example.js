@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AddContact from './AddContact';
+import Contacts from './Contacts';
+import NavBar from './NavBar';
 
 function Example() {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Universe Component</div>
-                        <div className="card-body">
-                            Hello Universe I am Here to learn React with laravel
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <>
+       <Router>
+       <NavBar />
+            <Switch>
+                <Route path="/" exact component={Contacts} />
+                <Route path="/add-contact" exact component={AddContact} />
+            </Switch>
+       </Router>
+       </>
     );
 }
 

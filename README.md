@@ -40,3 +40,7 @@ $ php artisan make:controller ContactController --resource
 
 ## create Contact Model
 $ php artisan make:model Contact
+
+
+## install react and react router dom for linking page on specific url
+$ npm install react-router react-router-dom
