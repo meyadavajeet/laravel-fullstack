@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -34,7 +36,23 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //first way of storing data in database table
+        // $contact = new Contact();
+        // $contact->fullName = $request->fullName;
+        // $contact->email = $request->email;
+        // $contact->phone = $request->phone;
+        // $result = $contact->save();
+
+        //Second way of storing data in database table
+        $contact = Contact::create([
+            'fullName' => $request->fullName,
+            'email' => $request->email,
+            'phone' => $request->phone
+        ]);
+        if ($contact)
+            return ["status" => 200, "response" => "Data Added Successfully!!!"];
+        else
+            return ["status" => 422, "response" => "Operation Failed !!!"];
     }
 
     /**
