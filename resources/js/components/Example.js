@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AddContact from './AddContact';
 import Contacts from './Contacts';
+import EditContact from './EditContact';
 import NavBar from './NavBar';
 
 function Example() {
@@ -13,6 +14,7 @@ function Example() {
             <Switch>
                 <Route path="/" exact component={Contacts} />
                 <Route path="/add-contact" exact component={AddContact} />
+                <Route path="/edit-contact/:id" exact component={EditContact} />
             </Switch>
        </Router>
        </>

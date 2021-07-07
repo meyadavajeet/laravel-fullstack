@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('/contacts',ContactController::class);
+
+Route::get('/get-csrf',[ContactController::class,'getCSRFToken']);

@@ -1,6 +1,10 @@
 import React from "react";
 import axios from "axios";
 import ContactCard from "./ContactCard";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 class Contacts extends React.Component {
     state = {
@@ -20,6 +24,16 @@ class Contacts extends React.Component {
     componentDidMount() {
         this.fetchContacts();
     }
+
+    deleteContact = async (id) => {
+        const res = await axios.delete(`/contacts/${id}`);
+        if (res.data.status === 200) {
+            toast.success(res.data.response, {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            this.fetchContacts();
+        }
+    };
     render() {
         if (this.state.loader) {
             return <h1 className="text-center">Loading ....</h1>;
@@ -34,6 +48,7 @@ class Contacts extends React.Component {
                                 <ContactCard
                                     contact={contact}
                                     key={contact.id}
+                                    deleteContact={this.deleteContact}
                                 />
                             ))}
                         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Ui\Presets\React;
 
 class ContactController extends Controller
 {
@@ -66,7 +67,8 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = Contact::find($id);
+        return response()->json(['status' => 200, 'contact' => $contact]);
     }
 
     /**
@@ -78,6 +80,8 @@ class ContactController extends Controller
     public function edit($id)
     {
         //
+        $contact = Contact::find($id);
+        return response()->json(['status' => 200, 'contact' => $contact]);
     }
 
     /**
@@ -90,6 +94,14 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $contact = Contact::find($id);
+        $contact->fullName = $request->fullName;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        if ($contact->save())
+            return ["status" => 200, "response" => "Data Updated Successfully!!!"];
+        else
+            return ["status" => 422, "response" => "Operation Failed !!!"];
     }
 
     /**
@@ -101,5 +113,15 @@ class ContactController extends Controller
     public function destroy($id)
     {
         //
+        $contact = Contact::find($id);
+        if ($contact->delete())
+            return response()->json(['status' => 200, 'response' => 'Data Deleted Successfully!!!']);
+        else
+            return ["status" => 401, "response" => "Operation Failed !!!"];
+    }
+
+    public function getCSRFToken(Request $request)
+    {
+        return csrf_token();
     }
 }
